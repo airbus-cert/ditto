@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <title>hello-wasm example</title>
+    </head>
+    <body>
+        <script type="module">
+            import { get_impostors, obfuscate } from "./ditto.js";
+            console.log(get_impostors());
+            console.log(obfuscate("echo 'toto'", "alakazam"));
+        </script>
+    </body>
+</html>

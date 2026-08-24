@@ -1,0 +1,12 @@
+pub mod array;
+pub mod curse;
+pub mod float;
+pub mod global_this;
+pub mod identifier;
+pub mod impostor;
+pub mod integer;
+pub mod jsfuck;
+pub mod member;
+pub mod string;
+pub mod switch;
+pub mod utils;

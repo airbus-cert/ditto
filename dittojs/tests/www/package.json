@@ -1,0 +1,13 @@
+{
+  "name": "ditto",
+  "version": "0.1.9",
+  "description": "Obfuscate Powershell scripts with recipes based on Tree-Sitter",
+  "license": "ISC",
+  "author": "dolphino",
+  "type": "module",
+  "main": "ditto.js",
+  "dependencies": {
+    "@babel/runtime": "^7.28.4",
+    "@bytecodealliance/jco": "^1.14.0"
+  }
+}

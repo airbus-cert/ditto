@@ -1,0 +1,16 @@
+[package]
+edition = "2024"
+name = "ditto-cli"
+version = "0.2.0"
+authors = ["Airbus CERT <cert@airbus.com>"]
+description = "A CLI for ditto"
+repository = "https://github.com/airbus-cert/ditto"
+license = "MIT"
+
+[dependencies]
+clap = { version = "4.6.1", features = ["derive"] }
+clap-help = "1.4.0"
+ditto = { path = "../../core" }
+log = { workspace = true }
+pretty_env_logger = "0.5.0"
+termimad = "0.34.1"

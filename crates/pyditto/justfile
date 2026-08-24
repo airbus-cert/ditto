@@ -1,0 +1,10 @@
+root := justfile_dir()
+
+build:
+    maturin build --profile release
+
+test:
+    echo "TODO: Python tests not implemented yet"
+
+publish: build
+    maturin publish --profile release

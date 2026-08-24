@@ -1,0 +1,7 @@
+// wit/ditto.wit
+package airbus-cert:ditto;
+
+world ditto {
+  export get-impostors: func() -> list<string>;
+  export obfuscate: func(source: string, impostor: string) -> string;
+}

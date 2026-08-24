@@ -1,0 +1,25 @@
+name: Build pyditto
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  pyditto-build:
+    runs-on: ["ubuntu-latest"]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install Nix
+        uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v17
+        with:
+          name: devenv
+      - name: Install devenv.sh
+        run: nix profile install nixpkgs#devenv
+
+      - name: build
+        shell: devenv shell bash -- -e {0}
+        run: just py build
