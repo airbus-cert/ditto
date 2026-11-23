@@ -1,7 +1,7 @@
 use crate::Lang::JavaScript;
 use crate::js::utils::curse::*;
 use crate::js::utils::number::{is_js_safe_integer, parse_number};
-use crate::js::utils::string::unescape_js_string;
+use crate::js::utils::string::{is_directive_string, unescape_js_string};
 use crate::pass::Pass;
 use crate::{Lang, Mutation};
 use rand::rng;
@@ -28,6 +28,10 @@ impl Pass for CurseString {
             if parent.kind() == "pair" {
                 return Ok(None);
             }
+        }
+
+        if is_directive_string(node) {
+            return Ok(None);
         }
 
         let value = unescape_js_string(node.text()?);

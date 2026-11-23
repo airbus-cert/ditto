@@ -54,6 +54,10 @@ impl Pass for StringSplit {
             }
         }
 
+        if is_directive_string(node) {
+            return Ok(None);
+        }
+
         let value = unescape_js_string(node.text()?);
         if value.len() < 2 {
             return Ok(None);
@@ -143,6 +147,10 @@ impl Pass for StringTransform {
             if parent.kind() == "pair" {
                 return Ok(None);
             }
+        }
+
+        if is_directive_string(node) {
+            return Ok(None);
         }
 
         let value = unescape_js_string(node.text()?);
@@ -493,6 +501,10 @@ impl Pass for StringEscape {
             }
         }
 
+        if is_directive_string(node) {
+            return Ok(None);
+        }
+
         let value = unescape_js_string(node.text()?);
         if value.is_empty() {
             return Ok(None);
@@ -616,6 +628,10 @@ impl Pass for StringEncode {
             if parent.kind() == "pair" {
                 return Ok(None);
             }
+        }
+
+        if is_directive_string(node) {
+            return Ok(None);
         }
 
         let value = unescape_js_string(node.text()?);
