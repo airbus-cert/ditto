@@ -119,6 +119,12 @@ impl Pass for JsFuckStrings {
             return Ok(None);
         }
 
+        if let Some(parent) = node.parent() {
+            if parent.kind() == "pair" {
+                return Ok(None);
+            }
+        }
+
         let value = unescape_js_string(node.text()?);
 
         let replacement = encode(value.as_str(), self.max_level);

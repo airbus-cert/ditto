@@ -9,6 +9,10 @@ pub fn parse_number(view: &Node) -> Option<f64> {
         return None;
     }
 
+    if is_pair_key(view) {
+        return None;
+    }
+
     let token = view.text().unwrap();
 
     match view.kind() {
@@ -202,6 +206,14 @@ pub fn fract_leading_zeros(n: f64) -> usize {
         return 0;
     }
     (-log).floor() as usize - 1
+}
+
+pub fn is_pair_key(node: &Node) -> bool {
+    node.parent()
+        .filter(|parent| parent.kind() == "pair")
+        .and_then(|parent| parent.named_child("key"))
+        .map(|key| key == *node)
+        .unwrap_or(false)
 }
 
 #[cfg(test)]

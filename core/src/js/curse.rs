@@ -65,10 +65,7 @@ impl Pass for CurseNumber {
             let replacement = if is_js_safe_integer(number) {
                 curse_integer_math(number as i64, &mut rng())
             } else {
-                format!(
-                    "+({})",
-                    curse_string(&number.to_string(), &mut rng())
-                )
+                format!("+({})", curse_string(&number.to_string(), &mut rng()))
             };
 
             return Ok(Some(vec![Mutation::substitute(node, replacement)?]));
