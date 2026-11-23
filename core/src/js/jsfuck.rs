@@ -131,7 +131,7 @@ impl Pass for JsFuckStrings {
 
         let value = unescape_js_string(node.text()?);
 
-        let replacement = encode(value.as_str(), self.max_level);
+        let replacement = format!("({})", encode(value.as_str(), self.max_level));
         trace!("JsFucked '{}'", value);
         Ok(Some(vec![Mutation::substitute(node, replacement)?]))
     }
