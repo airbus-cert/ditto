@@ -2,10 +2,11 @@
 name = "ditto"
 version = "0.1.9"
 edition = "2024"
-authors = ["Airbus CERT <cert@airbus.com>"]
-description = "A script obfuscator"
-repository = "https://github.com/airbus-cert/ditto"
-license = "MIT"
+authors.workspace = true
+description.workspace = true
+repository.workspace = true
+readme.workspace = true
+license.workspace = true
 
 [lib]
 name = "ditto"

@@ -2,10 +2,11 @@
 edition = "2024"
 name = "ditto-cli"
 version = "0.2.0"
-authors = ["Airbus CERT <cert@airbus.com>"]
 description = "A CLI for ditto"
-repository = "https://github.com/airbus-cert/ditto"
-license = "MIT"
+authors.workspace = true
+repository.workspace = true
+readme.workspace = true
+license.workspace = true
 
 [dependencies]
 clap = { version = "4.6.1", features = ["derive"] }

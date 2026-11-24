@@ -26,7 +26,6 @@ __pycache__/
 /target
 bin/
 build/
-Cargo.lock
 coverage.xml
 debug/
 develop-eggs/
