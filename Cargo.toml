@@ -9,7 +9,6 @@ resolver = "3"
 log = "0.4"
 
 [workspace.package]
-version = "0.5.0"
 authors = ["Airbus CERT <cert@airbus.com>"]
 description = "A script obfuscator"
 repository = "https://github.com/airbus-cert/ditto"

@@ -2,20 +2,21 @@
 name = "ditto"
 version = "0.1.9"
 edition = "2024"
-authors = ["Airbus CERT <cert@airbus.com>"]
-description = "A script obfuscator"
-repository = "https://github.com/airbus-cert/ditto"
-license = "MIT"
+authors.workspace = true
+description.workspace = true
+repository.workspace = true
+readme.workspace = true
+license.workspace = true
 
 [lib]
 name = "ditto"
 path = "src/lib.rs"
 
 [dependencies]
-base64 = "0.22.0"
+base64 = "0.23"
 clap = { version = "^4", optional = true }
 indoc = "2.0.5"
-itertools = "0.14.0"
+itertools = "0.15"
 log = {workspace = true}
 rand = "0.10"
 regex = "1.11.1"
