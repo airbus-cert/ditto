@@ -16,4 +16,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 ditto = { path = "../../core" }
-wit-bindgen = "0.45.0"
+wit-bindgen = "0.63"
