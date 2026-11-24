@@ -1,8 +1,15 @@
+use crate::tree::Node;
 use log::{trace, warn};
 use rand::prelude::*;
 use rand::{Rng, rng};
 use std::cmp::min;
 use std::collections::HashMap;
+
+pub fn is_directive_string(node: &Node) -> bool {
+    node.parent()
+        .map(|parent| parent.kind() == "expression_statement")
+        .unwrap_or(false)
+}
 
 pub fn unescape_js_string(s: &str) -> String {
     if s.len() < 2 {

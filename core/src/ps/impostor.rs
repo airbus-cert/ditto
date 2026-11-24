@@ -116,106 +116,106 @@ impl Impostor for Pikachu {
         let mut var_manager = VarManager::default();
         Ok(Source::new(&source)
             .transform(AsStaticString::default())?
-        .transform(CmdletAsString::default())?
-        .transform(RandomVarCommand::default())?
-        .transform(Base64Str::default())?
-        .transform(RandomVarType::new(&mut var_manager))?
-        .transform(MemberAsStaticString::default())?
-        .transform(RandomVarAll::new(
-            &mut var_manager,
-            vec![LiteralType::STRING],
-        ))?
-        .transform(ModuloInlineHexlify::default())?
-        .transform(RandomVarAll::new(
-            &mut var_manager,
-            vec![LiteralType::INTEGER],
-        ))?
-        .output()?)
-}
+            .transform(CmdletAsString::default())?
+            .transform(RandomVarCommand::default())?
+            .transform(Base64Str::default())?
+            .transform(RandomVarType::new(&mut var_manager))?
+            .transform(MemberAsStaticString::default())?
+            .transform(RandomVarAll::new(
+                &mut var_manager,
+                vec![LiteralType::STRING],
+            ))?
+            .transform(ModuloInlineHexlify::default())?
+            .transform(RandomVarAll::new(
+                &mut var_manager,
+                vec![LiteralType::INTEGER],
+            ))?
+            .output()?)
+    }
 }
 
 #[derive(Default)]
 pub struct Bulbasaur;
 
 impl Impostor for Bulbasaur {
-fn lang(&self) -> Lang {
-    PowerShell
-}
+    fn lang(&self) -> Lang {
+        PowerShell
+    }
 
-fn transform(&self, source: &str) -> DittoResult<String> {
-    let mut var_manager = VarManager::default();
-    Ok(Source::new(&source)
-        .transform(AsStaticString::default())?
-        .transform(CmdletAsString::default())?
-        .transform(RandomVarCommand::default())?
-        .transform(Base64Str::default())?
-        .transform(MemberAsStaticString::default())?
-        .transform(RandomVarType::new(&mut var_manager))?
-        .transform(RandomVarAll::new(
-            &mut var_manager,
-            vec![LiteralType::STRING],
-        ))?
-        .transform(ModuloReverse::default())?
-        .output()?)
-}
+    fn transform(&self, source: &str) -> DittoResult<String> {
+        let mut var_manager = VarManager::default();
+        Ok(Source::new(&source)
+            .transform(AsStaticString::default())?
+            .transform(CmdletAsString::default())?
+            .transform(RandomVarCommand::default())?
+            .transform(Base64Str::default())?
+            .transform(MemberAsStaticString::default())?
+            .transform(RandomVarType::new(&mut var_manager))?
+            .transform(RandomVarAll::new(
+                &mut var_manager,
+                vec![LiteralType::STRING],
+            ))?
+            .transform(ModuloReverse::default())?
+            .output()?)
+    }
 }
 
 #[derive(Default)]
 pub struct Charizard;
 
 impl Impostor for Charizard {
-fn lang(&self) -> Lang {
-    PowerShell
-}
+    fn lang(&self) -> Lang {
+        PowerShell
+    }
 
-fn transform(&self, source: &str) -> DittoResult<String> {
-    let mut var_manager = VarManager::default();
-    Ok(Source::new(&source)
-        .transform(AsStaticString::default())?
-        .transform(CmdletAsString::default())?
-        .transform(Base64Str::default())?
-        .transform(ModuloInlineHexlify::default().modulo(rand::rng().random_range(1..3)))?
-        .transform(MemberAsStaticString::default())?
-        .transform(RandomVarAll::new(
-            &mut var_manager,
-            vec![LiteralType::STRING],
-        ))?
-        .transform(ModuloReverse::default())?
-        .transform(RandomVarType::new(&mut var_manager))?
-        .transform(RandomVarAll::new(
-            &mut var_manager,
-            vec![LiteralType::INTEGER],
-        ))?
-        .output()?)
-}
+    fn transform(&self, source: &str) -> DittoResult<String> {
+        let mut var_manager = VarManager::default();
+        Ok(Source::new(&source)
+            .transform(AsStaticString::default())?
+            .transform(CmdletAsString::default())?
+            .transform(Base64Str::default())?
+            .transform(ModuloInlineHexlify::default().modulo(rand::rng().random_range(1..3)))?
+            .transform(MemberAsStaticString::default())?
+            .transform(RandomVarAll::new(
+                &mut var_manager,
+                vec![LiteralType::STRING],
+            ))?
+            .transform(ModuloReverse::default())?
+            .transform(RandomVarType::new(&mut var_manager))?
+            .transform(RandomVarAll::new(
+                &mut var_manager,
+                vec![LiteralType::INTEGER],
+            ))?
+            .output()?)
+    }
 }
 
 #[derive(Default)]
 pub struct Ivysaur;
 
 impl Impostor for Ivysaur {
-fn lang(&self) -> Lang {
-    PowerShell
-}
+    fn lang(&self) -> Lang {
+        PowerShell
+    }
 
-fn transform(&self, source: &str) -> DittoResult<String> {
-    let mut var_manager = VarManager::default();
-    Ok(Source::new(&source)
-        .transform(AsStaticString::default())?
-        .transform(CmdletAsString::default())?
-        .transform(Base64Str::default())?
-        .transform(ModuloInlineHexlify::default().modulo(rand::rng().random_range(1..2)))?
-        .transform(MemberAsStaticString::default())?
-        .transform(VerbsVarAll::new(
-            &mut var_manager,
-            vec![LiteralType::STRING],
-        ))?
-        .transform(ModuloReverse::default())?
-        .transform(RandomVarType::new(&mut var_manager))?
-        .transform(VerbsVarAll::new(
-            &mut var_manager,
-            vec![LiteralType::INTEGER],
-        ))?
-        .output()?)
-}
+    fn transform(&self, source: &str) -> DittoResult<String> {
+        let mut var_manager = VarManager::default();
+        Ok(Source::new(&source)
+            .transform(AsStaticString::default())?
+            .transform(CmdletAsString::default())?
+            .transform(Base64Str::default())?
+            .transform(ModuloInlineHexlify::default().modulo(rand::rng().random_range(1..2)))?
+            .transform(MemberAsStaticString::default())?
+            .transform(VerbsVarAll::new(
+                &mut var_manager,
+                vec![LiteralType::STRING],
+            ))?
+            .transform(ModuloReverse::default())?
+            .transform(RandomVarType::new(&mut var_manager))?
+            .transform(VerbsVarAll::new(
+                &mut var_manager,
+                vec![LiteralType::INTEGER],
+            ))?
+            .output()?)
+    }
 }

@@ -137,6 +137,14 @@ fn replace_expression(
         }
     }
 
+    if kind == "expression_statement" {
+        if let Some(child) = node.child(0) {
+            if child.kind() == "string" {
+                return Ok(None);
+            }
+        }
+    }
+
     let mut rng = rand::rng();
     let statement_text = match node.text() {
         Ok(text) => text,

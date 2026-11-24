@@ -54,6 +54,10 @@ impl Pass for StringSplit {
             }
         }
 
+        if is_directive_string(node) {
+            return Ok(None);
+        }
+
         let value = unescape_js_string(node.text()?);
         if value.len() < 2 {
             return Ok(None);
@@ -143,6 +147,10 @@ impl Pass for StringTransform {
             if parent.kind() == "pair" {
                 return Ok(None);
             }
+        }
+
+        if is_directive_string(node) {
+            return Ok(None);
         }
 
         let value = unescape_js_string(node.text()?);
@@ -254,7 +262,11 @@ impl Pass for StringTransform {
                 )?]))
             }
             Concat => {
-                let half = value.len() / 2;
+                // see issue #1
+                let mut half = value.len() / 2;
+                while half > 0 && !value.is_char_boundary(half) {
+                    half -= 1;
+                }
                 let left = escape_js_string(&value[..half], true);
                 let right = escape_js_string(&value[half..], true);
                 Ok(Some(vec![Mutation::substitute(
@@ -282,7 +294,7 @@ impl Pass for StringTransform {
                 let left_noise = generate_noise(rng.random_range(1..strength), &mut rng);
                 let right_noise = generate_noise(rng.random_range(1..strength), &mut rng);
                 let left_idx = left_noise.len();
-                let right_idx = value.len();
+                let right_idx = value.chars().count();
                 let noisy_str = escape_js_string(
                     format!("{}{}{}", left_noise, value, right_noise).as_str(),
                     true,
@@ -493,6 +505,10 @@ impl Pass for StringEscape {
             }
         }
 
+        if is_directive_string(node) {
+            return Ok(None);
+        }
+
         let value = unescape_js_string(node.text()?);
         if value.is_empty() {
             return Ok(None);
@@ -616,6 +632,10 @@ impl Pass for StringEncode {
             if parent.kind() == "pair" {
                 return Ok(None);
             }
+        }
+
+        if is_directive_string(node) {
+            return Ok(None);
         }
 
         let value = unescape_js_string(node.text()?);

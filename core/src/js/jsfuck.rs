@@ -3,7 +3,7 @@ use crate::Lang::JavaScript;
 use crate::Mutation;
 use crate::js::utils::jsfuck::*;
 use crate::js::utils::number::*;
-use crate::js::utils::string::unescape_js_string;
+use crate::js::utils::string::{is_directive_string, unescape_js_string};
 use crate::pass::Pass;
 use log::trace;
 
@@ -119,9 +119,19 @@ impl Pass for JsFuckStrings {
             return Ok(None);
         }
 
+        if let Some(parent) = node.parent() {
+            if parent.kind() == "pair" {
+                return Ok(None);
+            }
+        }
+
+        if is_directive_string(node) {
+            return Ok(None);
+        }
+
         let value = unescape_js_string(node.text()?);
 
-        let replacement = encode(value.as_str(), self.max_level);
+        let replacement = format!("({})", encode(value.as_str(), self.max_level));
         trace!("JsFucked '{}'", value);
         Ok(Some(vec![Mutation::substitute(node, replacement)?]))
     }
